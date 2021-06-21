@@ -1,4 +1,4 @@
-# docker-w-trivy-compose
+# docker-trivy-compose
 This image contains the following:
 - docker
 - docker-compose
@@ -10,7 +10,7 @@ GitLab example:
 ````
 security:
 stage: security
-image: csib/docker-w-trivy-compose:latest
+image: csib/docker-trivy-compose:latest
 variables:
   IMAGE: registry.gitlab.com/csibvpn/csibjoomla:$CI_COMMIT_SHA
 allow_failure: true
