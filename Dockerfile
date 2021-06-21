@@ -21,4 +21,4 @@ LABEL \
   org.opencontainers.image.source="https://github.com/csib/docker-trivy-compose" \
   org.opencontainers.image.title="Docker Compose and Trivy on docker base image" \
   org.opencontainers.image.vendor="csib" \
-  org.opencontainers.image.version="${DOCKER_VERSION} with docker-compose and Trivy ${TRIVY_VERSION}"
+  org.opencontainers.image.version="Docker v${DOCKER_VERSION} with docker-compose and Trivy ${TRIVY_VERSION}"
