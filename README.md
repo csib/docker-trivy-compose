@@ -4,6 +4,11 @@ This image contains the following:
 - docker-compose
 - trivy
 
+| Version        | Docker           | Compose  | Trivy 
+| :-------------:|:-------------:   | :-----:  | :-----:|
+| 20(latest)     | 20               | 1.29.2   |   0.18.3
+
+
 You can use this image to build & security test your images.
 
 GitLab example:
