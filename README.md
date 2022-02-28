@@ -25,11 +25,11 @@ script:
     # Build image
     - docker build -t $IMAGE .
     # Build report
-    - trivy --exit-code 0 --cache-dir .trivycache/ --no-progress --format template --template "@/contrib/gitlab.tpl" -o gl-container-scanning-report.json $IMAGE
+    - trivy --cache-dir .trivycache/ image --exit-code 0 --no-progress --format template --template "@/contrib/gitlab.tpl" -o gl-container-scanning-report.json $IMAGE
     # Print report
-    - trivy --exit-code 0 --cache-dir .trivycache/ --no-progress --severity HIGH $IMAGE
+    - trivy --cache-dir .trivycache/ image --exit-code 0 --no-progress --severity HIGH $IMAGE
     # Fail on severe vulnerabilities
-    - trivy --exit-code 1 --cache-dir .trivycache/ --severity CRITICAL --no-progress $IMAGE
+    - trivy --cache-dir .trivycache/ image --exit-code 1 --severity CRITICAL --no-progress $IMAGE
 cache:
   paths:
     - .trivycache/
