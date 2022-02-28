@@ -2,16 +2,18 @@ ARG DOCKER_VERSION=20
 FROM docker:${DOCKER_VERSION}
 
 ARG DOCKER_COMPOSE_VERSION=1.29.2
-ARG TRIVY_VERSION=0.19.1
+ARG TRIVY_VERSION=0.24.0
 
 
-RUN apk add --no-cache py3-pip
+RUN apk add --no-cache py3-pip curl git
 
 RUN apk add --no-cache --virtual build-dependencies python3-dev libffi-dev openssl-dev curl gcc libc-dev make musl-dev openssl-dev cargo && \
     pip3 install docker-compose==${DOCKER_COMPOSE_VERSION} && apk del build-dependencies
 
 RUN wget --no-verbose https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz -O - | tar -zxvf - && \
     mv trivy /usr/local/bin/
+RUN curl --location --output /usr/local/bin/release-cli "https://release-cli-downloads.s3.amazonaws.com/latest/release-cli-linux-amd64" && \
+    chmod +x /usr/local/bin/release-cli
 
 RUN apk update && apk upgrade
 
